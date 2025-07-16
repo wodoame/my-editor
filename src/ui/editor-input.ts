@@ -13,7 +13,7 @@ export class EditorInput extends BaseElement {
                 autofocus 
                 rows="1"
                 spellcheck="false" 
-                class="w-full outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-slate-500 placeholder:italic"
+                class="w-full outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-gray-400"
                 placeholder="Type your code here ..."
                 tabindex="0"
                 style="font-family:consolas;"

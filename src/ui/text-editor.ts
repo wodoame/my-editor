@@ -1,6 +1,7 @@
 import { html } from 'lit';
-import './editor-input.js';
-import './editor-output.js';
+import './editor-input.ts';
+import './editor-output.ts';
+import './editor-linenumbers.ts';
 import { BaseElement } from './base.js';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -11,7 +12,8 @@ export class TextEditor extends BaseElement {
 
     render() {
         return html`
-        <div class="p-2 h-full hljs text-sm overflow-y-auto">
+        <div class="p-2 h-full hljs text-sm overflow-y-auto flex">
+            <editor-linenumbers code=${this.code}></editor-linenumbers>
             <div class="relative w-full">
                 <editor-output
                     class="absolute top-0 left-0 pointer-events-none w-full z-[1]"
