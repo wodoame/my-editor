@@ -4,7 +4,6 @@ import { BaseElement } from './base';
 
 @customElement('editor-input')
 export class EditorInput extends BaseElement {
-
     render() {
         return html`
             <textarea 
@@ -13,7 +12,7 @@ export class EditorInput extends BaseElement {
                 autofocus 
                 rows="1"
                 spellcheck="false" 
-                class="w-full outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-gray-400"
+                class="w-full outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-gray-400 [&::selection]:bg-[#264F78]/50"
                 placeholder="Type your code here ..."
                 tabindex="0"
                 style="font-family:consolas;"

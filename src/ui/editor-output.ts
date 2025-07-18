@@ -3,6 +3,7 @@ import { Highlighter } from '../utils/highlighter';
 import { BaseElement } from './base';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+
 @customElement('editor-output')
 export class EditorOutput extends BaseElement {
     highlighter: Highlighter;
@@ -19,8 +20,10 @@ export class EditorOutput extends BaseElement {
 
     render() {
         const highlightedCode = this.highlighter.highlight(this.code);
+
         // For debugging purposes
         // console.log(highlightedCode);
+
         return html`
             <div>
                 <pre><code class="language-${this.language}">${unsafeHTML(highlightedCode)}</code></pre>

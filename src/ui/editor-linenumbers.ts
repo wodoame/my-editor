@@ -11,7 +11,7 @@ export class EditorLineNumbers extends BaseElement {
         // Split code into lines
         const lines = this.code.split(/\r?\n/);
         return html`
-            <div class="flex flex-col items-end justify-end select-none text-gray-400 text-sm pr-1" style="font-family:consolas">
+            <div class="flex flex-col items-end justify-end select-none text-gray-400 text-sm pl-2 pr-4" style="font-family:consolas">
                 ${lines.map((_, i) => html`<div class="align-text-bottom">${i + 1}</div>`)}
             </div>
         `;
