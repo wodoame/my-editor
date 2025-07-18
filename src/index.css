@@ -10,3 +10,28 @@
 @import "highlight.js/styles/monokai.css";
 @import "highlight.js/styles/nord.css";
 */
+
+/* Apply custom scrollbar only to .custom-scrollbar */
+.custom-scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2d2e #1e1e1e;
+}
+
+/* Chrome, Edge, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  background: #1e1e1e;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2a2d2e;
+  border-radius: 6px;
+  border: 3px solid #1e1e1e;
+  transition: box-shadow 0.2s;
+}
+
+/* Highlight effect when scrolling */
+.custom-scrollbar.scrolling::-webkit-scrollbar-thumb {
+  box-shadow: 0 0 0 4px rgba(0, 122, 204, 0.25); /* VS Code blue, semi-transparent */
+}

@@ -5,15 +5,24 @@ import './editor-linenumbers.ts';
 import './editor-guides.ts'
 import { BaseElement } from './base.js';
 import { customElement, property } from 'lit/decorators.js';
+import { ref } from 'lit/directives/ref.js';
 
 @customElement('text-editor')
 export class TextEditor extends BaseElement {
     @property({ type: String })
-    code = ''; 
+    code = '';
+
+    private scrollTimer: number | undefined;
+    private scrollDiv?: HTMLDivElement;
 
     render() {
         return html`
-        <div class="p-2 h-full hljs text-sm overflow-y-auto flex">
+        <div
+            class="p-2 h-full hljs text-sm overflow-y-auto custom-scrollbar flex"
+            ${ref((el: Element | undefined) => {
+                this.scrollDiv = el instanceof HTMLDivElement ? el : undefined;
+            })}
+        >
             <editor-linenumbers code=${this.code}></editor-linenumbers>
             <div class="relative w-full">
                 <editor-output
@@ -32,8 +41,19 @@ export class TextEditor extends BaseElement {
         `;
     }
 
+    firstUpdated() {
+        if (this.scrollDiv) {
+            this.scrollDiv.addEventListener('scroll', () => {
+                this.scrollDiv!.classList.add('scrolling');
+                window.clearTimeout(this.scrollTimer);
+                this.scrollTimer = window.setTimeout(() => {
+                    this.scrollDiv!.classList.remove('scrolling');
+                }, 400);
+            });
+        }
+    }
+
     handleInput(e: CustomEvent) {
-        // console.log('Code input received:', e.detail);
         this.code = e.detail;
     }
 }
