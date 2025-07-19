@@ -11,7 +11,7 @@ export class EditorOutput extends BaseElement {
     code: string = '';
 
     @property({ type: String })
-    language: string = 'javascript';
+    language: string = 'typescript';
 
     constructor() {
         super();

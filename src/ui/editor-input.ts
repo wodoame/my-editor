@@ -11,8 +11,9 @@ export class EditorInput extends BaseElement {
                 @keydown=${this.handleKeydown}
                 autofocus 
                 rows="1"
-                spellcheck="false" 
-                class="w-full outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-gray-400 [&::selection]:bg-[#264F78]/50"
+                cols="100000"
+                spellcheck="false"
+                class="overflow-hidden outline-0 text-transparent h-full caret-sky-500 resize-none placeholder:text-gray-400 [&::selection]:bg-[#264F78]/50"
                 placeholder="Type your code here ..."
                 tabindex="0"
                 style="font-family:consolas;"
@@ -22,9 +23,10 @@ export class EditorInput extends BaseElement {
 
     handleInput(e: InputEvent) {
         const target = e.target as HTMLTextAreaElement;
-        // Auto-expand logic
+        // Auto-expand height
         target.style.height = 'auto';
         target.style.height = target.scrollHeight + 'px';
+        
         this.dispatchEvent(new CustomEvent('code-input', {
             detail: target.value,
             bubbles: true,

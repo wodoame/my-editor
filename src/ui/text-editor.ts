@@ -24,9 +24,9 @@ export class TextEditor extends BaseElement {
             })}
         >
             <editor-linenumbers code=${this.code}></editor-linenumbers>
-            <div class="relative w-full">
+            <div class="relative">
                 <editor-output
-                class="absolute top-0 left-0 pointer-events-none w-full z-[1]"
+                class="absolute top-0 left-0 pointer-events-none min-w-full z-[1]"
                 code=${this.code}
                 ></editor-output>
                 <editor-input

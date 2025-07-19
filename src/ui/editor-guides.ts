@@ -10,7 +10,7 @@ export class EditorGuides extends BaseElement {
     render() {
         // Example: parse code for indentation and render guides
         const lines = this.code.split(/\r?\n/);
-        console.log(lines); // For debugging purposes
+        // console.log(lines); // For debugging purposes
         // const indentSize = 1; // spaces per indent
         const tabWidth = 32; // pixels per tab
         return html`
